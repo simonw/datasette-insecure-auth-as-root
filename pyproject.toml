@@ -1,8 +1,30 @@
-# To get the tests to pass when the repo is first copied
-
 [project]
-name = "datasette-plugin-template-repository"
+name = "datasette-insecure-auth-as-root"
 version = "0.1"
+description = "Extremely unsafe plugin: every Datasette visitor is treated as the root user"
+readme = "README.md"
+authors = [{name = "Simon Willison"}]
+license = {text = "Apache-2.0"}
+classifiers=[
+    "Framework :: Datasette",
+    "License :: OSI Approved :: Apache Software License"
+]
+requires-python = ">=3.8"
+dependencies = [
+    "datasette"
+]
+
+[project.urls]
+Homepage = "https://github.com/simonw/datasette-insecure-auth-as-root"
+Changelog = "https://github.com/simonw/datasette-insecure-auth-as-root/releases"
+Issues = "https://github.com/simonw/datasette-insecure-auth-as-root/issues"
+CI = "https://github.com/simonw/datasette-insecure-auth-as-root/actions"
+
+[project.entry-points.datasette]
+insecure_auth_as_root = "datasette_insecure_auth_as_root"
 
 [project.optional-dependencies]
-test = ["pytest"]
+test = ["pytest", "pytest-asyncio"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "strict"
